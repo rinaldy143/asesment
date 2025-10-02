@@ -9,6 +9,12 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('/login', 'login')->name('auth.login');
         Route::post('/register', 'register')->name('auth.register');
     });
+    Route::get('/ping', function () {
+        return response()->json([
+            'success' => true,
+            'message' => 'API is working!',
+        ]);
+    });
 
     Route::group(['middleware' => ['auth:sanctum']], function () {
 

@@ -26,15 +26,12 @@ class AuthService extends AppService
     public function login($data)
     {
         if (!Auth::attempt(['email' => $data->email, 'password' => $data->password])) {
+            dd(123);
             throw new Exception('Credentials not match', 401);
         }
-
         $user = Auth::user();
         $user = UserTable::findOrFail($user->id);
 
-        if(!$user->status){
-            throw new Exception('Account is inactive', 401);
-        }
         $user['token'] = $user->createToken('API Token')->plainTextToken;
 
         return $user;

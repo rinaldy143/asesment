@@ -22,11 +22,16 @@ class User extends AppModel implements AuthenticatableContract, AuthorizableCont
      * @var array<int, string>
      */
 
-    protected $table = 'users';
+    protected $table        = 'users';
+    protected $guard_name   = 'web';
+    public    $incrementing = false;
+    protected $keyType      = 'string';
 
     protected $fillable = [
         'name',
         'email',
+        'role',
+        'phone',
         'password',
     ];
 
@@ -45,11 +50,4 @@ class User extends AppModel implements AuthenticatableContract, AuthorizableCont
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
 }
