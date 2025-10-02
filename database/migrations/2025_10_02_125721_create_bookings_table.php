@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('title')->nullable();
-            $table->string('description')->nullable();
-            $table->dateTime('date')->nullable();
-            $table->string('location')->nullable();
+            $table->string('quantity')->nullable();
+            $table->string('status')->nullable();
             $table->foreignUuid('user_id')->nullable()->references('id')->on('users');
+            $table->foreignUuid('ticket_id')->nullable()->references('id')->on('tickets');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('bookings');
     }
 };

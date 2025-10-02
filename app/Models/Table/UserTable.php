@@ -12,4 +12,14 @@ class UserTable extends User
     {
         return $this->hasMany(EventTable::class, 'user_id', 'id');
     }
+
+    public function bookings(): HasMany
+    {
+        return $this->hasMany(BookingTable::class, 'user_id', 'id');
+    }
+
+    // public function payments(): HasMany
+    // {
+    //     return $this->hasMany(PaymentTable::class, 'user_id', 'id');
+    // }
 }

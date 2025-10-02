@@ -1,52 +1,52 @@
 <?php
 
-namespace App\Services\Event;
+namespace App\Services\Ticket;
 
 use Exception;
 use App\Services\AppService;
-use App\Models\Table\EventTable;
+use App\Models\Table\TicketTable;
 use App\Services\AppServiceInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class EventService extends AppService implements AppServiceInterface
+class TicketService extends AppService implements AppServiceInterface
 {
 
-    public function __construct(EventTable $model)
+    public function __construct(TicketTable $model)
     {
         parent::__construct($model);
     }
 
     public function dataTable($filter)
     {
-        return EventTable::datatable($filter)->paginate($filter->entries ?? 15);
+        return TicketTable::datatable($filter)->paginate($filter->entries ?? 15);
     }
 
     public function index()
     {
-        $users = EventTable::all();
+        $users = TicketTable::all();
         return $users;
     }
 
     public function getById($id)
     {
-        return EventTable::findOrFail($id);
+        return TicketTable::findOrFail($id);
     }
 
     public function create($data)
     {
-        return EventTable::create($data);
+        return TicketTable::create($data);
     }
 
     public function update($id, $data)
     {
-        $row = EventTable::findOrFail($id);
+        $row = TicketTable::findOrFail($id);
         $row->update($data);
         return $row;
     }
 
     public function delete($id)
     {
-        $row = EventTable::findOrFail($id);
+        $row = TicketTable::findOrFail($id);
         $row->delete();
         return $row;
     }

@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('tickets', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('title')->nullable();
-            $table->string('description')->nullable();
-            $table->dateTime('date')->nullable();
-            $table->string('location')->nullable();
-            $table->foreignUuid('user_id')->nullable()->references('id')->on('users');
+            $table->string('type')->nullable();
+            $table->string('price')->nullable();
+            $table->string('quantity')->nullable();
+            $table->foreignUuid('event_id')->nullable()->references('id')->on('events');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('tickets');
     }
 };

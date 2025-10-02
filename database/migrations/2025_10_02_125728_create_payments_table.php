@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('title')->nullable();
-            $table->string('description')->nullable();
-            $table->dateTime('date')->nullable();
-            $table->string('location')->nullable();
-            $table->foreignUuid('user_id')->nullable()->references('id')->on('users');
+            $table->string('amount')->nullable();
+            $table->string('status')->nullable();
+            $table->foreignUuid('booking_id')->nullable()->references('id')->on('bookings');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('payments');
     }
 };
