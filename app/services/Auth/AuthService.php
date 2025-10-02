@@ -60,33 +60,10 @@ class AuthService extends AppService
      *
      * @return object
      */
-    public function profile()
+    public function me()
     {
-        // $user = Auth::user();
-        // $user->makeHidden('userRole');
-        // $role = Role::where('id', $user->userRole->role_id)->first();
-        // $rolePermissions   = $role->permissions()->select(['id', 'name', 'group_name'])->get()->toArray();
-        // $directPermissions = $user->permissions()->select(['id', 'name', 'group_name'])->get()->toArray();
-        // $permissions = array_merge($rolePermissions, $directPermissions);
-
-        // $groupName = [];
-        // $addedGroups = [];
-        // foreach ($permissions as $permission) {
-        //     $temp = [];
-        //     $temp['group_name'] = $permission['group_name'];
-        //     if (!in_array(current($temp), $addedGroups)) {
-        //         $groupName[] = $temp;
-        //         $addedGroups[] = current($temp);
-        //     }
-        //     foreach ($groupName as $keyGroup => $group) {
-        //         if ($group['group_name'] == current($temp)) {
-        //             $groupName[$keyGroup]['permissions'][] = $permission['name'];
-        //         }
-        //     }
-        // }
-        // $user['permissions'] = $groupName;
-
-        // return $user;
+        $user = Auth::user();
+        return $user;
     }
 
     /**

@@ -31,6 +31,12 @@ class LoginController extends ApiController
         }
     }
 
+    public function me()
+    {
+        $user = $this->service->me();
+        return $this->sendSuccess($user, null, 200);
+    }
+
     public function logout(Request $request)
     {
 

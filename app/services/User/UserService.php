@@ -22,14 +22,10 @@ class UserService extends AppService implements AppServiceInterface
         return UserTable::datatable($filter)->paginate($filter->entries ?? 15);
     }
 
-    public function listUser($filter)
+    public function index($filter)
     {
-        try{
-            $users = UserTable::role('cooperative')->datatable($filter)->paginate($filter->entries ?? 15);
-            return $users;
-        }catch (Exception $e){
-            throw new Exception("There are currently no users with the Cooperative role.", 400);
-        }
+        $users = UserTable::all();
+        return $users;
     }
 
     public function getById($id)

@@ -31,20 +31,20 @@ class UserController extends ApiController
      */
     public function index(Request $request)
     {
-        $data = $this->service->dataTable($request);
+        $data = $this->service->index($request);
         return $this->sendSuccess($data, null, 200);
     }
 
 
-    public function listUser(Request $request)
-    {
-        try {
-            $data = $this->service->listUser($request);
-            return $this->sendSuccess($data, null, 200);
-        }catch (Exception $e){
-            return $this->sendError(null, $e->getMessage(), $e->getCode());
-        }
-    }
+    // public function listUser(Request $request)
+    // {
+    //     try {
+    //         $data = $this->service->listUser($request);
+    //         return $this->sendSuccess($data, null, 200);
+    //     }catch (Exception $e){
+    //         return $this->sendError(null, $e->getMessage(), $e->getCode());
+    //     }
+    // }
 
     /**
      * Store a newly created resource in storage.
