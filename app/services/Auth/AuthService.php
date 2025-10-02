@@ -44,15 +44,14 @@ class AuthService extends AppService
      */
     public function register($data)
     {
-        // $user = UserTable::create([
-        //     'name'      => $data['name'],
-        //     'email'     => $data['email'],
-        //     'password'  => Hash::make($data['password']),
-        //     'fms_token' => $fmsToken ?? null,
-        // ]);
+        $user = UserTable::create([
+            'name'      => $data['name'],
+            'email'     => $data['email'],
+            'password'  => Hash::make($data['password']),
+        ]);
 
-        // $user['token'] = $user->createToken('API Token')->plainTextToken;
-        // return $user;
+        $user['token'] = $user->createToken('API Token')->plainTextToken;
+        return $user;
     }
 
     /**
