@@ -31,6 +31,12 @@ class LoginController extends ApiController
         }
     }
 
+    public function register(RegisterRequest $request)
+    {
+        $user = $this->service->register($request);
+        return $this->sendSuccess($user, null, 200);
+    }
+
     public function me()
     {
         $user = $this->service->me();
