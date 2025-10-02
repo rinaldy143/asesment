@@ -24,7 +24,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['middleware' => ['auth:sanctum']], function () {
 
         Route::prefix('auth')->controller(LoginController::class)->group(function () {
-            Route::get('/me', 'ne')->name('auth.ne');
+            Route::get('/me', 'me')->name('auth.me');
             Route::post('/logout', 'logout')->name('auth.logout');
         });
 
