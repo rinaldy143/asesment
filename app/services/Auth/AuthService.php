@@ -26,7 +26,6 @@ class AuthService extends AppService
     public function login($data)
     {
         if (!Auth::attempt(['email' => $data->email, 'password' => $data->password])) {
-            dd(123);
             throw new Exception('Credentials not match', 401);
         }
         $user = Auth::user();
