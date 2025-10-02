@@ -6,8 +6,6 @@ use Exception;
 use App\Services\AppService;
 use App\Models\Table\UserTable;
 use App\Services\AppServiceInterface;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Spatie\Permission\Exceptions\RoleDoesNotExist;
 
 class UserService extends AppService implements AppServiceInterface
 {
@@ -22,7 +20,7 @@ class UserService extends AppService implements AppServiceInterface
         return UserTable::datatable($filter)->paginate($filter->entries ?? 15);
     }
 
-    public function index($filter)
+    public function index()
     {
         $users = UserTable::all();
         return $users;
