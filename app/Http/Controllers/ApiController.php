@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ResponseService;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
 
-class Controller extends BaseController
+class ApiController extends Controller
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    protected $request;
 
-    public function responseWrapper($data = null)
+    public function __construct(Request $request)
     {
-        return new ResponseService($data);
+        $this->request = $request;
     }
+
     /**
      * Send Response Success
      *
